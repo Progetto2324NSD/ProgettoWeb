@@ -8,7 +8,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = setState(null);
+    const [error, setError] = useState(null);
 
     const handleLogin = async (e) => {
         e.preventDefault();
