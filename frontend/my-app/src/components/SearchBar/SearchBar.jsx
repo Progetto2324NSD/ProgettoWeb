@@ -1,8 +1,16 @@
 import React from 'react'
 
-const SearchBar = () => {
+const SearchBar = ( {value, onChange, handleSearch, onClearSearch }) => {
     return(
-        <div>SearchBar</div>
+        <div>
+            <input
+             type="text"
+             placeholder="Search Notes"
+             className="w-full text-xs bg-transparentm py-[11px] outline-none"
+             value={value} 
+             onChange={onChange}
+             /> 
+        </div>
     )
 }
 
