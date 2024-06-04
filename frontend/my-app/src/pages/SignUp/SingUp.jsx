@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { useState } from "react";
+import Navbar from "../../components/NavBar/Navbar";
+import { Link } from "react-router-dom";
+import PasswordInput from "../../components/Input/PasswordInput";
+import { validateEmail } from "../../utils/helper";
 
 const SignUp = () => {
 
@@ -33,7 +37,7 @@ const SignUp = () => {
     return (
         <>
 
-         <Navbar />
+            <Navbar />
 
             <div className="flex items-center justify-center mt-28">
                 <div className="w-96 border rounded bg-white px-7 py-10">
@@ -42,7 +46,7 @@ const SignUp = () => {
 
                        <input 
                             type="text" 
-                            placeholder="Inserire il nome" 
+                            placeholder="Nome" 
                             className="input-box" 
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -50,7 +54,7 @@ const SignUp = () => {
 
                         <input 
                             type="text" 
-                            placeholder="Inserire l'email" 
+                            placeholder="Email" 
                             className="input-box" 
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
