@@ -3,7 +3,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 
 
-const SearchBar = ( {value, onChange, handleSearch, onClearSearch }) => {
+const SearchBar = ({ value, onChange, handleSearch, onClearSearch }) => {
     return(
         <div className="w-80 flex items-center px-4 bg-state-100 rounded-md">
             <input
@@ -15,9 +15,9 @@ const SearchBar = ( {value, onChange, handleSearch, onClearSearch }) => {
              />
 
             {value && (
-             <IoMdClose className="text-xl text-slate-500 cursor-pointer hover:text-black mr-3" 
-             onClick={onClearSearch} 
-             />
+               <IoMdClose className="text-xl text-slate-500 cursor-pointer hover:text-black mr-3" 
+                onClick={onClearSearch} 
+               />
             )}
 
              <FaMagnifyingGlass className="text-slate-400 cursor-pointer hover:text-black" onClick={handleSearch} />
