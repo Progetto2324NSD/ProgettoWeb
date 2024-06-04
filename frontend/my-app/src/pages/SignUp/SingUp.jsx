@@ -10,7 +10,25 @@ const SignUp = () => {
 
     const handleSignUp = async (e) => {
        e.preventDefault();
-    }
+
+
+        if(!name) {
+          setError("Inserire il tuo nome");
+          return ;
+        }
+
+        if(!validateEmail(email)) {
+          setError("Inserire un email valida");
+          return;
+        }
+
+        if(!password) {
+          setError("Inserire la password");
+          return;
+        }
+
+        setError('');
+    };
 
     return (
         <>
