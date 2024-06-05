@@ -17,12 +17,12 @@ const SignUp = () => {
 
 
         if(!name) {
-          setError("Inserire il tuo nome");
+          setError("Inserire il nome");
           return ;
         }
 
         if(!validateEmail(email)) {
-          setError("Inserire un email valida");
+          setError("Inserire una email valida");
           return;
         }
 
