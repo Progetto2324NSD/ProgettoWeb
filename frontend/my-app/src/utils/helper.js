@@ -3,6 +3,11 @@ export const validateEmail = (email) => {
     return regex.test(email);
 };
 
+export const validatePassword = (password) => {
+    const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    return regex.test(password);
+};
+
 
 export const getInitials = (name) => {
     if (!name) return "";
