@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../../components/NavBar/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordInput from "../../components/Input/PasswordInput";
-import { validateEmail } from "../../utils/helper";
+import { validateEmail, validatePassword } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 
 const SignUp = () => {
@@ -28,8 +28,18 @@ const SignUp = () => {
           return;
         }
 
-        if(!password) {
-          setError("Inserire la password");
+        if(!validatePassword(password)) {
+            const errorMessage = (
+                <>
+                    Inserire una password valida! <br />
+                    N.B.La password deve contenere: <br />
+                    min. 8 caratteri<br />
+                    min. 1 carattere<br />
+                    min. 1 lettera maiuscola<br />
+                    min. 1 numero<br />
+                </>
+            )
+          setError(errorMessage);
           return;
         }
 
