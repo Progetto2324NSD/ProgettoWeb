@@ -70,7 +70,7 @@ const SignUp = () => {
             if (error.response && error.response.data && error.response.data.message) {
             setError(error.response.data.message);
             } else {
-            setError("An unexpected error occurred. Please try again.");
+            setError("Si è verificato un errore improvviso. Riprovare.");
             }
         }
     };
@@ -115,9 +115,7 @@ const SignUp = () => {
 
                         <p className="text-sm text-center mt-4">
                            Hai già un account?{" "}
-                            <Link to="/login" className="font-medium text-primary underline">
-                              Login
-                            </Link>
+                          <Link to="/login" className="font-medium text-primary underline">Login</Link>
                         </p>
                     </form>
                 </div>
