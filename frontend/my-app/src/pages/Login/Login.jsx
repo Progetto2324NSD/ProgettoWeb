@@ -16,12 +16,12 @@ const Login = () => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
-      setError("Please enter a valid email address.");
+      setError("Inserire una email valida.");
       return;
     }
 
     if (!password) {
-      setError("Please enter the password");
+      setError("Inserire la password.");
       return;
     }
 
@@ -44,9 +44,9 @@ const Login = () => {
     } catch (error) {
       // Handle login error
       if (error.response && error.response.data && error.response.data.message) {
-        setError(error.response.data.message);
+        setError("Utente non registrato.");
       } else {
-        setError("An unexpected error occurred. Please try again.");
+        setError("Si è verificato un errore improvviso. Riprovare.");
       }
     }
   };
