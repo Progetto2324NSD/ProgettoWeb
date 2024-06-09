@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../../components/NavBar/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordInput from "../../components/Input/PasswordInput";
-import { validateEmail } from "../../utils/helper";
+import { validateEmail, validatePassword } from "../../utils/helper";
+import axiosInstance from "../../utils/axiosInstance";
 
 const SignUp = () => {
 
@@ -11,6 +12,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
 
+    const navigate = useNavigate()
 
     const handleSignUp = async (e) => {
        e.preventDefault();
@@ -26,12 +28,51 @@ const SignUp = () => {
           return;
         }
 
-        if(!password) {
-          setError("Inserire la password");
+        if(!validatePassword(password)) {
+            const errorMessage = (
+                <>
+                    Inserire una password valida! <br />
+                    N.B.La password deve contenere: <br />
+                    min. 8 caratteri<br />
+                    min. 1 carattere<br />
+                    min. 1 lettera maiuscola<br />
+                    min. 1 numero<br />
+                </>
+            )
+          setError(errorMessage);
           return;
         }
 
         setError('');
+
+        // SignUp API Call
+
+        try {
+            const response = await axiosInstance.post("/create-account", {
+            fullName: name,
+            email: email,
+            password: password,
+            });
+            
+            // Handle successful registration response 
+            if(response.data && response.data.error){
+            setError(response.data.message)
+            return
+            }
+    
+            if(response.data && response.data.accessToken){
+            localStorage.setItem("token", response.data.accessToken)
+            navigate('/dashboard')
+            }
+    
+        } catch (error) {
+            // Handle login error
+            if (error.response && error.response.data && error.response.data.message) {
+            setError(error.response.data.message);
+            } else {
+            setError("Si è verificato un errore improvviso. Riprovare.");
+            }
+        }
     };
 
     return (
@@ -74,15 +115,8 @@ const SignUp = () => {
 
                         <p className="text-sm text-center mt-4">
                            Hai già un account?{" "}
-                            <Link to="/login" className="font-medium text-primary underline">
-                              Login
-                            </Link>
+                          <Link to="/login" className="font-medium text-primary underline">Login</Link>
                         </p>
-
-
-
-
-
                     </form>
                 </div>
             </div>
