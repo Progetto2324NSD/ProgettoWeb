@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
+import PasswordInput from "./components/Input/PasswordInput";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Route path="/dashboard" exact element={<Home />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signUp" exact element={<SignUp />} />
-          <Route path="/passdimenticata" exact element={<PassDimenticata />} />
+          <Route path="/passdimenticata" exact element={<Password />} />
         </Routes>
       </Router>
     </div>
