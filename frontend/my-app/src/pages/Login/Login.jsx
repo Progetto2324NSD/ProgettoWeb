@@ -78,6 +78,9 @@ const Login = () => {
             <p className="text-sm text-center mt-4">
               Non sei ancora registrato? <Link to='/signUp' className="font-medium text-primary underline">Crea un account</Link>
             </p>
+            <p className="text-sm text-center mt-4">
+              Password dimenticata? <Link to='/passdimenticata' className="font-medium text-primary underline">Reset Password</Link>
+            </p>
           </form>
         </div>
       </div>
