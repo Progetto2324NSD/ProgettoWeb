@@ -9,6 +9,7 @@ const User = require("./models/user.model");
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const bcrypt = require('bcrypt');
 
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
@@ -92,10 +93,12 @@ app.post("/login", async (req, res) => {
     return res.status(400).json({ message: "User not found" });
   }
 
-  if (userInfo.email == email && userInfo.password == password) {
+  const passwordMatch = await bcrypt.compare(password, userInfo.password);
+
+  if (passwordMatch) {
     const user = { user: userInfo };
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "36000m",
+      expiresIn: "3600m",
     });
 
     return res.json({
