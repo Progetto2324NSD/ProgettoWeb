@@ -76,8 +76,10 @@ const Login = () => {
             <button type="submit" className="btn-primary">Login</button>
 
             <p className="text-sm text-center mt-4">
-              Non sei ancora registrato? <Link to='/signUp' className="font-medium text-primary underline">Crea un account</Link>
+              Non sei ancora registrato? <Link to='/signUp' className="font-medium text-primary underline">Crea un account</Link><br></br>
+              <Link to='/Reset' className="font-medium text-primary underline">Password dimenticata?</Link>
             </p>
+
           </form>
         </div>
       </div>
