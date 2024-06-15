@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
-import Reset from "./pages/Reset/Reset";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/dashboard" exact element={<Home />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signUp" exact element={<SignUp />} />
-          <Route path="/Reset" exact element={<Reset />} />
+          <Route path="/ResetPassword" exact element={<ResetPassword />} />
+          <Route path="/ForgotPassword" exact element={<ForgotPassword />} />
         </Routes>
       </Router>
     </div>
