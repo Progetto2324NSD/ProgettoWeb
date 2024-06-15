@@ -131,6 +131,10 @@ app.get("/get-user", authenticateToken, async (req, res) => {
   });
 });
 
+//ForgotPassword
+
+
+
 
 app.listen(8000);
 
