@@ -7,11 +7,12 @@ const userSchema=new Schema({
     email: { type: String},
     password: { type: String},
     createdOn: { type: Date, default: new Date().getTime() },
-
 });
 
 userSchema.pre("save", async function(next){
+
     const user = this;
+
     if(!user.isModified) return next();
     let salt = await bcrypt.genSalt(10);
     let hash = await bcrypt.hash(user.password, salt);
@@ -20,6 +21,7 @@ userSchema.pre("save", async function(next){
 })
 
 userSchema.methods.comparePassword = async function (password){
+
     return bcrypt.compare(password, this.password);
 }
 
